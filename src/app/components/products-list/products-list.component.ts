@@ -42,23 +42,24 @@ export class ProductsListComponent implements OnInit {
           expir_date:"2020-12-31"
          }
       ]
-// this.products.forEach(product=>{
-//   this.product.expir_date=product.expir_date;
-//  
-//})
-for(let i =0;i<this.products.length;i++){
-  this.product=this.products[i];
-  if(this.dateOfToday>this.product.expir_date){
-        console.log(this.product.expir_date)
-        this.expired=true;
-        console.log(this.expired);
-      }
-      else {
-        this.expired=false;
-        console.log(this.product.expir_date);
-        console.log(this.expired);
-      }
+this.products.forEach(product=>{
+  this.product.expir_date=product.expir_date;
+if(this.dateOfToday>this.product.expir_date){
+  console.log(this.product.expir_date)
+  this.expired=true;
+  console.log(this.expired);
 }
+else {
+  this.expired=false;
+  console.log(this.product.expir_date);
+  console.log(this.expired);
+}
+ 
+})
+// for(let i =0;i<this.products.length;i++){
+//   this.product=this.products[i];
+  
+// }
   
 
   

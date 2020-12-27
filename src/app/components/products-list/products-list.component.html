@@ -37,7 +37,7 @@
       </tr>
     </thead>
     <tbody>
-        <tr [ngStyle]="{'background-color': (expired==true) ? '' : 'white'}" *ngFor="let product of products; let i = index"> 
+        <tr [ngStyle]="{'background-color': (expired==true) ? '#FFFF00' : 'white'}" *ngFor="let product of products; let i = index"> 
         <td>{{product.name | titlecase}}</td>
         <td>{{product.description | titlecase}}</td>
          
