@@ -27,11 +27,13 @@
  <nz-table>
     <thead>
       <tr>
-        <th >Name</th>
+        <th>Name</th>
         <th>description</th>
         <th>Expire date</th>
         <th>quentity</th>
+        <!-- <th>expired or not</th> -->
         <th>Options</th>
+        
       </tr>
     </thead>
     <tbody>
@@ -41,8 +43,9 @@
          
         <td >{{product.expir_date}}</td>
         <td>{{product. quentity}}</td>
+        <!-- <td>{{expired}}</td> -->
         <td>
-
+          <!-- *ngIf="expired==true" -->
           <a (click)="getProduct(i)">Update</a>
           <nz-divider nzType="vertical"></nz-divider>
           <a (click)="deleteProduct(i)">Delete</a>

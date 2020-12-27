@@ -14,11 +14,13 @@ export class ProductsListComponent implements OnInit {
   indexOfProduct:number;
   updatedProduct:{};
   dateOfToday:any;
-  expired:boolean=false;
+  expired:boolean=true;
   isVisible = false;
   isOk=false;
   IsForUpdate:boolean=true;
   isForCreate:boolean=false;
+
+
     constructor(private datePipe:DatePipe) { }
   
     ngOnInit(): void {
@@ -37,43 +39,49 @@ export class ProductsListComponent implements OnInit {
           name:"products 2",
           description:"product 2 discription ",
           quentity:"2",
-          expir_date:"2020-12-30"
-        }
+          expir_date:"2020-12-31"
+         }
       ]
-   this.products.forEach(product => {
-     product.expir_date =product.expir_date
-     console.log(product.expir_date)
-    if(product.expir_date < this.dateOfToday ){
-    this.expired=true;
-    console.log(this.expired);
-    }
-     else this.expired=false;
-  });
-      
-    }
+// this.products.forEach(product=>{
+//   this.product.expir_date=product.expir_date;
+//  
+//})
+for(let i =0;i<this.products.length;i++){
+  this.product=this.products[i];
+  if(this.dateOfToday>this.product.expir_date){
+        console.log(this.product.expir_date)
+        this.expired=true;
+        console.log(this.expired);
+      }
+      else {
+        this.expired=false;
+        console.log(this.product.expir_date);
+        console.log(this.expired);
+      }
+}
+  
+
+  
+}
   
 
   showModal(){
     this.isVisible=true;
     this.product={};
     this.IsForUpdate = false;
-  
-
   }
 
   handleCancel(){
     this.isVisible = false;
   }
   handleOk(){
-    this.isVisible = false;
+    this.isVisible=false;
   }
   
   saveProduct(product:{}){
       this.products.push(product);
       this.product={};
       this.isVisible = false;
-     
-     
     }
     
   getProduct(i){
@@ -93,10 +101,8 @@ export class ProductsListComponent implements OnInit {
     this.updatedProduct=this.products[i];
   };
   this.isVisible = false;
+  }
 }
- 
-
- }
     
  
  deleteProduct(i:number){
