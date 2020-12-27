@@ -1,0 +1,53 @@
+
+
+ <button nz-button nzType="primary" (click)="showModal()">Add Product</button>
+ <!--  -->
+
+ <nz-modal [(nzVisible)]="isVisible" nzTitle="Add Product"  (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()"  >
+    <ng-container *nzModalContent>
+      <!-- (ngSubmit)="saveProduct(f.value)" -->
+      <form name="form"  #f="ngForm">
+        <input nz-input name="name" placeholder="Product name" [(ngModel)]="product.name" />
+        <br/>
+        <br/>
+        <input nz-input name="description" placeholder="description" [(ngModel)]="product.description"/>
+        <br/>
+        <br/>
+        <input nz-input name="expir_date" placeholder="expir date" [(ngModel)]="product.expir_date"/>
+        <br/>
+        <br/>
+        <input nz-input name="quentity" placeholder="quentity" [(ngModel)]="product.quentity"/>
+        <br/>
+        <button nz-button type="submit" (click)="saveProduct(f.value)" [disabled]="IsForUpdate == true" nzType="primary">Save</button>
+        <button nz-button nzType="default" (click)="updateProduct()" >update</button>
+      </form>  
+    </ng-container>
+  </nz-modal>
+
+ <nz-table>
+    <thead>
+      <tr>
+        <th >Name</th>
+        <th>description</th>
+        <th>Expire date</th>
+        <th>quentity</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr [ngStyle]="{'background-color': (expired==true) ? '' : 'white'}" *ngFor="let product of products; let i = index"> 
+        <td>{{product.name | titlecase}}</td>
+        <td>{{product.description | titlecase}}</td>
+         
+        <td >{{product.expir_date}}</td>
+        <td>{{product. quentity}}</td>
+        <td>
+
+          <a (click)="getProduct(i)">Update</a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a (click)="deleteProduct(i)">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+  
